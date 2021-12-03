@@ -29,18 +29,17 @@ def day_3_p1():
     This function takes a matrix of binary numbers as input and sums the most and less common bits for each column and returns the product in decimal of those two numbers.
     """
     report = day_3_input("day_3_input.txt")
-    sums = np.sum(report, axis=0)
-    gamma_rate = ""
-    epsilon_rate = ""
-    for value in sums:
-        if value >= len(report) / 2:
-            gamma_rate += "1"
-            epsilon_rate += "0"
-        else:
-            gamma_rate += "0"
-            epsilon_rate += "1"
-
-    return int(gamma_rate, 2) * int(epsilon_rate, 2)
+    return (lambda x: x * (~x & (2 ** 12 - 1)))(
+        int(
+            "".join(
+                [
+                    ("1" if value >= len(report) / 2 else "0")
+                    for value in np.sum(report, axis=0)
+                ]
+            ),
+            2,
+        )
+    )
 
 
 def day_3_p2():
@@ -82,4 +81,4 @@ def day_3_p2():
     return int(generator_rating, 2) * int(scrubber_rating, 2)
 
 
-print(day_3_p2())
+print(day_3_p1())
