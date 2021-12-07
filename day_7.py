@@ -17,6 +17,16 @@ def day_7_p1():
 
     return fuel
 
+def day_7_p2_mean():
+    positions = np.array(day_7_input('day_7_input.txt'))
+    mean = math.floor(np.mean(positions))
+    fuel = 0
+
+    for pos in positions:
+        mvt = abs(pos - mean)
+        fuel += (mvt*(mvt+1))/2
+    return fuel
+
 def day_7_p2():
     positions = day_7_input('day_7_input.txt')
     fuel = float("inf")
@@ -29,3 +39,4 @@ def day_7_p2():
 
 ic(day_7_p1())
 ic(day_7_p2())
+ic(day_7_p2_mean())
