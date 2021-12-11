@@ -66,9 +66,4 @@ def day_10_p2():
             pile = pile[::-1]
             final_score.append(scoring(pile))
     return np.median(final_score)
-        
-
-
-
-
 ic(day_10_p2())
