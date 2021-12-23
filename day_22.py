@@ -25,6 +25,7 @@ for line in values:
     # si le cube en traitement est un ON, on le rajoute en entier puisqu'on a enlevé toutes ses intersections
     if nsgn > 0:
         update[(nx0, nx1, ny0, ny1, nz0, nz1)] += nsgn
+    # et on ajoute tout ces cubes dans le counter
     cubes.update(update)
 
 #On somme ce qu'on veut obtenir pour le chall. le nombre de cube de dimensions 1 1 1 dans une range c'est le produit de l'ecart de chaque +1
