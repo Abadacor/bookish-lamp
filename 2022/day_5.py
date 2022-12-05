@@ -1,3 +1,20 @@
+def day_5_alternative_input(filename):
+    with open(filename) as f:
+        head = [next(f) for x in range(8)]
+    crates = ['' for _ in range(9)]
+    for j, elem in enumerate(head):
+        for i in range(9):
+            if elem[i*4+1] != ' ':
+                crates[i] = elem[i*4+1] + crates[i]
+
+    with open(filename) as f:
+        instructions = f.readlines()
+        instructions = [ins.strip() for ins in instructions[10:]]
+        for j, ins in enumerate(instructions):
+            instructions[j] = [int(i) for i in ins.split() if i.isdigit()]
+
+    return [[*crate] for crate in crates], instructions
+
 def day_5_input(filename):
     #process current state of crates
     with open(filename) as f:
@@ -50,7 +67,9 @@ def process_all_instructions_p2(stacks, instructions):
         stacks = process_instruction_p2(stacks, instruction)
     return stacks
 
-stacks, instructions = day_5_input('/home/romain/Documents/advent_of_code/2022/day_5_input.txt')
+#stacks, instructions = day_5_input('/home/romain/Documents/advent_of_code/2022/day_5_input.txt')
+#stacks = process_all_instructions_p2(stacks, instructions)
+stacks, instructions = day_5_alternative_input('/home/romain/Documents/advent_of_code/2022/day_5_input.txt')
 stacks = process_all_instructions_p2(stacks, instructions)
 for elem in stacks:
     print(elem)
